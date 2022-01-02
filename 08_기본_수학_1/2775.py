@@ -1,18 +1,16 @@
-def re(a,b):
-    if b==0:
-        return 0
-    if a==0:
-        return b
-    else:
-        return re(a,b-1)+re(a-1,b)
-        
- 
-
-n=int(input())
-
+import sys
+           
+#a층 b호 , b는 14이하   
+n=int(sys.stdin.readline())
+l=[]
 for i in range(n):
-    a=int(input())
-    b=int(input())
+    a=int(sys.stdin.readline())
+    b=int(sys.stdin.readline())
+    l=[ i+1 for i in range(b) ]
     
-    r=re(a,b)
-    print(r)
+    for i in range(a):
+        for j in range(b):
+            if j>0:
+                l[j]=l[j-1]+l[j]
+            
+    print(l[b-1])
